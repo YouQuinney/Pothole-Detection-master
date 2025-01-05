@@ -143,6 +143,19 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 String name = etUname.getText().toString();
                 String password = etPassword.getText().toString();
+
+                if (name.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(Register.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    boolean success = databaseHelper.insertUser(name, password);
+                    if (success) {
+                        Toast.makeText(Register.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Register.this, Login.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+
                 mqttHelper.publish(client,"res","register,"+name+','+password);
                 uname_taken.setText("");
                 request_processing.setText("Request processing, Please wait . . .");
@@ -172,18 +185,6 @@ public class Register extends AppCompatActivity {
 
                     }
                 });
-
-                if (name.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(Register.this, "Please fill all fields", Toast.LENGTH_SHORT).show();
-                } else {
-                    boolean success = databaseHelper.insertUser(name, password);
-                    if (success) {
-                        Toast.makeText(Register.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Register.this, Login.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                }
             }
         });
 
