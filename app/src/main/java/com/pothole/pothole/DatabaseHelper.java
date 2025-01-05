@@ -26,7 +26,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,POTHOLE_NUMBER TEXT,LATITUDE TEXT,LONGITUDE TEXT)");
         db.execSQL("create table " + USER_TABLE +" (USERNAME TEXT PRIMARY KEY,PASSWORD TEXT )");
+    }
 
+    //@Override
+    public void createDB(SQLiteDatabase db){
+        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,POTHOLE_NUMBER TEXT,LATITUDE TEXT,LONGITUDE TEXT)");
+        db.execSQL("create table " + USER_TABLE +" (USERNAME TEXT PRIMARY KEY,PASSWORD TEXT )");
     }
 
     @Override
