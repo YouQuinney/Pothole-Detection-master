@@ -150,6 +150,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -185,10 +186,10 @@ public class Login extends AppCompatActivity {
     String callback;
 
     //////////////////////////MQTT Connect options/////////////////////////////
-    String URL = "tcp://m16.cloudmqtt.com";
-    String portNumber = "13941";
-    String userName = "vbqcvuri";
-    String mqpassword = "tgt22oGl7EwE";
+//    String URL = "tcp://m16.cloudmqtt.com";
+//    String portNumber = "13941";
+//    String userName = "vbqcvuri";
+//    String mqpassword = "tgt22oGl7EwE";
     DatabaseHelper databaseHelper;
     ///////////////////////////////////////////////////////////////////////////
     String clientId = MqttClient.generateClientId();
@@ -201,7 +202,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
+       // databaseHelper.createDB(new SQLiteOpenHelper(this.getApplicationContext()));
         ////////////////////////////////  MQTT //////////////////////////////////////////////////////////////
 //        client = new MqttAndroidClient(this.getApplicationContext(), URL + ":" + portNumber, clientId);
         MQTTHelper mqttHelper = new MQTTHelper();
@@ -218,6 +219,7 @@ public class Login extends AppCompatActivity {
         request_processing = (TextView) findViewById(R.id.request_processing);
         databaseHelper = new DatabaseHelper(this);
         loginStatus(false,Login.this);
+
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -236,6 +238,10 @@ public class Login extends AppCompatActivity {
                     boolean isValid = databaseHelper.checkLogin(stringUname, stringPassword);
                     if (isValid) {
                         Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
+                        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("isLogin", true);
+                        editor.apply();
                         Intent intent = new Intent(Login.this, MainActivity.class);
                         startActivity(intent);
                         finish();
