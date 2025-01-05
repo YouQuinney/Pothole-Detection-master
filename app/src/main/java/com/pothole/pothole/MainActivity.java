@@ -778,7 +778,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         //////////////////////////////////////////////////////////////////////////////////////////
 
         ///////////////////////////////  MapBOX  //////////////////////////////////////////////////
-        Mapbox.getInstance(this, "pk.eyJ1Ijoic2FtcGF0aHNhbSIsImEiOiJjanNybDU2ZHAwN3d2NDNwNGUzdzRqNXZ5In0.D4gRrSnSPep_O9Txw55fkQ");
+        Mapbox.getInstance(this, "pk.eyJ1IjoicXVpbm5leXlvdSIsImEiOiJjbTVqZ2k0eHYxN3h3MmtxMzNsazVwdTN6In0.Z8qHuvM-fnVyHzIKwDUGUQ");
         setContentView(R.layout.activity_main);
 
         mapView = findViewById(R.id.mapView);
