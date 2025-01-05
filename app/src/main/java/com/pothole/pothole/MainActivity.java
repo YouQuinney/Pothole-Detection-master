@@ -764,10 +764,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             startActivityForResult(myIntent,0);
         }
 
-
         acc = (TextView) findViewById(R.id.acc);
         textView = (TextView) findViewById(R.id.textView);
-
 
         //////////////////////////// READ FILE ////////////////////////////////////////////////////////////
         mPrefs=getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
@@ -949,8 +947,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return prefs.getString("uname_key",null);
     }
     public Boolean getLoginStatus(Context context){
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getBoolean("login_key",false);
+//        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+//        return prefs.getBoolean("login_key",false);
+            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+            return prefs.getBoolean("isLogin",false);
     }
     public void showToast() {
 
