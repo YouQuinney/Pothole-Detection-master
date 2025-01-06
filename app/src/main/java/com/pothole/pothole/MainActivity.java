@@ -63,16 +63,9 @@ import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.List;
 import java.util.Timer;
 
-import static android.content.ContentValues.TAG;
 import static com.pothole.pothole.R.color.grayTranslucent;
 import static com.pothole.pothole.R.color.greenTranslucent;
 
@@ -562,8 +555,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void getCurrentLocation() {
         LocationManager locationManager;
-        latitude=-77.602470;
-        longitude=43.154999;
         String context = Context.LOCATION_SERVICE;
         locationManager = (LocationManager) getSystemService(context);
         Criteria crta = new Criteria();
