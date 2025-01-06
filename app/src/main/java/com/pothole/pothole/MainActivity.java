@@ -562,6 +562,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void getCurrentLocation() {
         LocationManager locationManager;
+        latitude=-77.602470;
+        longitude=43.154999;
         String context = Context.LOCATION_SERVICE;
         locationManager = (LocationManager) getSystemService(context);
         Criteria crta = new Criteria();
