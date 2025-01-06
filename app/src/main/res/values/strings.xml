@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pothole</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoicXVpbm5leXlvdSIsImEiOiJjbTVqZ2k0eHYxN3h3MmtxMzNsazVwdTN6In0.Z8qHuvM-fnVyHzIKwDUGUQ</string>
 </resources>
